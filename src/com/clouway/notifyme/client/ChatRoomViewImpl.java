@@ -1,7 +1,6 @@
 package com.clouway.notifyme.client;
 
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.dom.client.DivElement;
 import com.google.gwt.event.dom.client.ClickEvent;
 import com.google.gwt.uibinder.client.UiBinder;
 import com.google.gwt.uibinder.client.UiField;
@@ -36,6 +35,12 @@ public class ChatRoomViewImpl extends Composite implements ChatRoomView {
   @UiField
   HTMLPanel signInPanel;
 
+  @UiField
+  Button sendButton;
+
+  @UiField
+  TextBox messageBox;
+
   public ChatRoomViewImpl() {
     initWidget(uiBinder.createAndBindUi(this));
   }
@@ -52,5 +57,15 @@ public class ChatRoomViewImpl extends Composite implements ChatRoomView {
   public void showChatRoom() {
     signInPanel.setVisible(false);
     chatPanel.setVisible(true);
+  }
+
+  @UiHandler("sendButton")
+  public void onSendButtonClick(ClickEvent event) {
+    presenter.sendMessage(messageBox.getText());
+  }
+
+  @Override
+  public void clearMessageBox() {
+    messageBox.setText("");
   }
 }

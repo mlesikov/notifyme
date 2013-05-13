@@ -18,24 +18,4 @@
     <listener-class>com.clouway.notifyme.server.NotifyMeGuiceServletConfig</listener-class>
   </listener>
 
-  <!-- ConnectionService -->
-  <servlet>
-    <servlet-name>com.clouway.notifyme.NotifyMe ConnectionService</servlet-name>
-    <servlet-class>com.clouway.notifyme.server.ConnectionServiceImpl</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>com.clouway.notifyme.NotifyMe ConnectionService</servlet-name>
-    <url-pattern>/NotifyMe/ConnectionService</url-pattern>
-  </servlet-mapping>
-
-  <!-- SubscriptionService -->
-  <servlet>
-    <servlet-name>com.clouway.notifyme.NotifyMe SubscriptionService</servlet-name>
-    <servlet-class>com.clouway.notifyme.server.SubscriptionServiceImpl</servlet-class>
-  </servlet>
-  <servlet-mapping>
-    <servlet-name>com.clouway.notifyme.NotifyMe SubscriptionService</servlet-name>
-    <url-pattern>/NotifyMe/SubscriptionService</url-pattern>
-  </servlet-mapping>
-
 </web-app>

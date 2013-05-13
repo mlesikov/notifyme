@@ -7,9 +7,13 @@ public interface ChatRoomView {
 
   public interface Presenter {
     void signIn(String username);
+
+    void sendMessage(String message);
   }
 
   void setPresenter(Presenter presenter);
 
   void showChatRoom();
+
+  void clearMessageBox();
 }

@@ -6,6 +6,6 @@ package com.clouway.notifyme.shared;
 public class ChatMessageEvent implements PushChannelEvent {
 
   public String getEventName() {
-    return this.getClass().toString();
+    return "ChatMessageEvent";
   }
 }

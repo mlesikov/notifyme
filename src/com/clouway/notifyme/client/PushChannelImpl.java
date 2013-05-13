@@ -2,7 +2,6 @@ package com.clouway.notifyme.client;
 
 import com.clouway.notifyme.shared.PushChannelEvent;
 import com.clouway.notifyme.shared.PushChannelEventHandler;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.inject.Inject;
 
@@ -65,6 +64,11 @@ public class PushChannelImpl implements PushChannel {
   }-*/;
 
   private void onReceivedMessage(String json) {
-    Window.alert("Message is received. Fire it to the appropriate handler");
+
+    String jsonData = json.replace("\n", "");
+
+    if (eventHandlers.containsKey(jsonData)) {
+      eventHandlers.get(jsonData).onMessage(null);
+    }
   }
 }

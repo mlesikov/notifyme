@@ -12,22 +12,30 @@ import java.util.Map;
  */
 public class SubscriptionsRepositoryImpl implements SubscriptionsRepository {
 
-  public static Map<PushChannelEvent, List<String>> events = new HashMap<PushChannelEvent, List<String>>();
+  private Map<String, List<String>> events = new HashMap<String, List<String>>();
 
   public void subscribe(String username, PushChannelEvent event) {
 
-    if (events.containsKey(event)) {
+    if (events.containsKey(event.getEventName())) {
 
-      List<String> subscribedUsers = events.get(event);
+      List<String> subscribedUsers = events.get(event.getEventName());
       subscribedUsers.add(username);
 
-      events.put(event, subscribedUsers);
+      events.put(event.getEventName(), subscribedUsers);
     } else {
 
       List<String> subscribedUsers = new ArrayList<String>();
       subscribedUsers.add(username);
 
-      events.put(event, subscribedUsers);
+      events.put(event.getEventName(), subscribedUsers);
     }
+  }
+
+  @Override
+  public List<String> getSubscribedUsers(PushChannelEvent event) {
+
+    List<String> subscribedUsers = events.get(event.getEventName());
+
+    return subscribedUsers;
   }
 }

@@ -20,6 +20,12 @@ public class NotifyMeGuiceServletConfig extends GuiceServletContextListener {
         serve("/NotifyMe/ConnectionService").with(ConnectionServiceImpl.class);
 
         serve("/NotifyMe/SubscriptionService").with(SubscriptionServiceImpl.class);
+
+        serve("/NotifyMe/MessageService").with(MessageServiceImpl.class);
+
+        bind(SubscriptionsRepository.class).to(SubscriptionsRepositoryImpl.class).in(Singleton.class);
+
+        bind(PushService.class).to(PushServiceImpl.class).in(Singleton.class);
       }
     });
   }
