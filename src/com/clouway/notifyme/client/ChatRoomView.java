@@ -16,4 +16,6 @@ public interface ChatRoomView {
   void showChatRoom();
 
   void clearMessageBox();
+
+  void displayMessage(String message);
 }

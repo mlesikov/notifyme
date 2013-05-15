@@ -4,7 +4,8 @@
 
   <inherits name="com.google.gwt.user.User"/>
   <inherits name="com.google.gwt.inject.Inject"/>
-  
+  <inherits name="com.google.web.bindery.autobean.AutoBean"/>
+
   <entry-point class="com.clouway.notifyme.client.NotifyMe"/>
 
   <source path="client" />

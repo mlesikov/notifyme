@@ -20,14 +20,14 @@ public class PushServiceImpl implements PushService {
     this.subscriptionsRepository = subscriptionsRepository;
   }
 
-  public void pushEvent(PushChannelEvent event) {
+  public void pushEvent(PushChannelEvent event, String jsonData) {
 
     List<String> subscribedUsers = subscriptionsRepository.getSubscribedUsers(event);
 
     ChannelService channelService = ChannelServiceFactory.getChannelService();
 
     for (String subscribedUser : subscribedUsers) {
-      channelService.sendMessage(new ChannelMessage(subscribedUser, event.getEventName()));
+      channelService.sendMessage(new ChannelMessage(subscribedUser, jsonData));
     }
   }
 }

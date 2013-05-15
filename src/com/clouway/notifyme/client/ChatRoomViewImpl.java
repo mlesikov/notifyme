@@ -8,6 +8,7 @@ import com.google.gwt.uibinder.client.UiHandler;
 import com.google.gwt.user.client.ui.Button;
 import com.google.gwt.user.client.ui.Composite;
 import com.google.gwt.user.client.ui.HTMLPanel;
+import com.google.gwt.user.client.ui.TextArea;
 import com.google.gwt.user.client.ui.TextBox;
 import com.google.gwt.user.client.ui.Widget;
 
@@ -41,6 +42,9 @@ public class ChatRoomViewImpl extends Composite implements ChatRoomView {
   @UiField
   TextBox messageBox;
 
+  @UiField
+  TextArea chatArea;
+
   public ChatRoomViewImpl() {
     initWidget(uiBinder.createAndBindUi(this));
   }
@@ -67,5 +71,10 @@ public class ChatRoomViewImpl extends Composite implements ChatRoomView {
   @Override
   public void clearMessageBox() {
     messageBox.setText("");
+  }
+
+  @Override
+  public void displayMessage(String message) {
+    chatArea.setText(chatArea.getText().concat(message).concat("\n"));
   }
 }

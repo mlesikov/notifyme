@@ -7,5 +7,5 @@ import com.clouway.notifyme.shared.PushChannelEvent;
  */
 public interface PushService {
 
-  void pushEvent(PushChannelEvent event);
+  void pushEvent(PushChannelEvent event, String jsonData);
 }

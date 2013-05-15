@@ -1,9 +1,8 @@
 package com.clouway.notifyme.client;
 
+import com.clouway.notifyme.shared.ChatMessage;
 import com.clouway.notifyme.shared.ChatMessageEvent;
-import com.clouway.notifyme.shared.PushChannelEvent;
 import com.clouway.notifyme.shared.PushChannelEventHandler;
-import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
 /**
@@ -30,10 +29,10 @@ public class ChatRoom implements ChatRoomView.Presenter {
       }
     });
 
-    pushChannel.subscribe(username, new ChatMessageEvent(), new PushChannelEventHandler() {
+    pushChannel.subscribe(username, new ChatMessageEvent(), new PushChannelEventHandler<ChatMessage>() {
 
-      public void onMessage(PushChannelEvent event) {
-        Window.alert("Received message...");
+      public void onMessage(ChatMessage chatMessage) {
+        display.displayMessage(chatMessage.getMessage());
       }
     });
   }

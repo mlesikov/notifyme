@@ -3,7 +3,7 @@ package com.clouway.notifyme.shared;
 /**
  * @author Ivan Lazov <ivan.lazov@clouway.com>
  */
-public interface PushChannelEventHandler {
+public interface PushChannelEventHandler<T> {
 
-  void onMessage(PushChannelEvent event);
+  void onMessage(T message);
 }
