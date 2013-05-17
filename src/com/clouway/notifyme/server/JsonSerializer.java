@@ -5,7 +5,6 @@ import com.clouway.notifyme.shared.PushChannelEvent;
 /**
  * @author Ivan Lazov <ivan.lazov@clouway.com>
  */
-public interface PushService {
-
-  void pushEvent(PushChannelEvent event);
+public interface JsonSerializer {
+  String serialize(PushChannelEvent event);
 }

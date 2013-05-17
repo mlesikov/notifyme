@@ -14,20 +14,38 @@ import java.util.List;
 public class PushServiceImpl implements PushService {
 
   private final SubscriptionsRepository subscriptionsRepository;
+  private JsonSerializer jsonSerializer;
 
   @Inject
   public PushServiceImpl(SubscriptionsRepository subscriptionsRepository) {
     this.subscriptionsRepository = subscriptionsRepository;
+    jsonSerializer = new JsonSerializerImpl();
   }
 
-  public void pushEvent(PushChannelEvent event, String jsonData) {
+  public void pushEvent(PushChannelEvent event) {
+
+    String eventAsJson = jsonSerializer.serialize(event);
+
+    String message = event.getEventName() + "|" + eventAsJson;
 
     List<String> subscribedUsers = subscriptionsRepository.getSubscribedUsers(event);
 
     ChannelService channelService = ChannelServiceFactory.getChannelService();
 
     for (String subscribedUser : subscribedUsers) {
-      channelService.sendMessage(new ChannelMessage(subscribedUser, jsonData));
+      channelService.sendMessage(new ChannelMessage(subscribedUser, message));
     }
   }
 }
+
+
+
+
+
+//ChatMessageFactory chatMessageFactory = AutoBeanFactorySource.create(ChatMessageFactory.class);
+//    ChatMessage chatMessage = chatMessageFactory.chatMessage().as();
+//    chatMessage.setMessage(message);
+//    chatMessage.setEventName("ChatMessageEvent");
+//
+//    AutoBean<ChatMessage> chatMessageAutoBean = AutoBeanUtils.getAutoBean(chatMessage);
+//    String jsonData = AutoBeanCodex.encode(chatMessageAutoBean).getPayload();

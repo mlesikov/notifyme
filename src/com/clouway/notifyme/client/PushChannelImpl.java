@@ -1,16 +1,12 @@
 package com.clouway.notifyme.client;
 
-import com.clouway.notifyme.shared.ChatMessage;
+import com.clouway.notifyme.shared.ChatMessageEventAutoBean;
 import com.clouway.notifyme.shared.ChatMessageFactory;
-import com.clouway.notifyme.shared.PushChannelData;
 import com.clouway.notifyme.shared.PushChannelEvent;
 import com.clouway.notifyme.shared.PushChannelEventHandler;
 import com.google.gwt.core.client.GWT;
-import com.google.gwt.core.client.JsonUtils;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.inject.Inject;
-import com.google.web.bindery.autobean.shared.AutoBean;
-import com.google.web.bindery.autobean.shared.AutoBeanCodex;
 import com.google.web.bindery.autobean.shared.AutoBeanFactory;
 
 import java.util.HashMap;
@@ -25,13 +21,15 @@ public class PushChannelImpl implements PushChannel {
   private final SubscriptionServiceAsync subscriptionServiceAsync;
 
   private Map<String, PushChannelEventHandler> eventHandlers = new HashMap<String, PushChannelEventHandler>();
-  private Map<String, Class<? extends AutoBeanFactory>> eventFactory = new HashMap<String, Class<? extends AutoBeanFactory>>();
+  private Map<String, AutoBeanFactory> eventFactory = new HashMap<String, AutoBeanFactory>();
   private Map<String, Class<?>> eventToClass = new HashMap<String, Class<?>>();
+  private GWTJsonDeserializer deserializer ;
 
   @Inject
   public PushChannelImpl(ConnectionServiceAsync connectionServiceAsync, SubscriptionServiceAsync subscriptionServiceAsync) {
     this.connectionServiceAsync = connectionServiceAsync;
     this.subscriptionServiceAsync = subscriptionServiceAsync;
+    deserializer = new GWTJsonDeserializerImpl();
   }
 
   public void connect(String username, final ConnectionListener connectionListener) {
@@ -56,8 +54,8 @@ public class PushChannelImpl implements PushChannel {
 
       public void onSuccess(Void result) {
         eventHandlers.put(event.getEventName(), eventHandler);
-        eventFactory.put(event.getEventName(), ChatMessageFactory.class);
-        eventToClass.put(event.getEventName(), ChatMessage.class);
+        eventFactory.put(event.getEventName(), (AutoBeanFactory) GWT.create(ChatMessageFactory.class));
+        eventToClass.put(event.getEventName(), ChatMessageEventAutoBean.class);
       }
     });
   }
@@ -75,14 +73,10 @@ public class PushChannelImpl implements PushChannel {
 
   private void onReceivedMessage(String json) {
 
-    PushChannelData pushChannelData = JsonUtils.safeEval(json);
+    String eventClassName = json.substring(0, json.indexOf("|"));
+    String eventDataJson = json.substring(json.indexOf("|") + 1, json.length());
+    PushChannelEvent event = deserializer.deserialize(eventClassName, eventDataJson);
 
-    if (eventHandlers.containsKey(pushChannelData.getEventName())) {
-
-      AutoBean<?> decode = AutoBeanCodex.decode(GWT.<AutoBeanFactory>create(eventFactory.get(pushChannelData.getEventName())), eventToClass.get(pushChannelData.getEventName()), json);
-      Object object = decode.as();
-
-      eventHandlers.get(pushChannelData.getEventName()).onMessage(object);
-    }
+    eventHandlers.get(eventClassName).onMessage(event);
   }
 }

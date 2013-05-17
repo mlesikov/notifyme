@@ -1,6 +1,6 @@
 package com.clouway.notifyme.client;
 
-import com.clouway.notifyme.shared.ChatMessage;
+import com.clouway.notifyme.shared.ChatMessageEventAutoBean;
 import com.clouway.notifyme.shared.ChatMessageEvent;
 import com.clouway.notifyme.shared.PushChannelEventHandler;
 import com.google.gwt.user.client.rpc.AsyncCallback;
@@ -20,7 +20,7 @@ public class ChatRoom implements ChatRoomView.Presenter {
     this.display = display;
   }
 
-  public void signIn(String username) {
+  public void signIn(final String username) {
 
     pushChannel.connect(username, new ConnectionListener() {
 
@@ -29,9 +29,9 @@ public class ChatRoom implements ChatRoomView.Presenter {
       }
     });
 
-    pushChannel.subscribe(username, new ChatMessageEvent(), new PushChannelEventHandler<ChatMessage>() {
+    pushChannel.subscribe(username, new ChatMessageEvent(), new PushChannelEventHandler<ChatMessageEventAutoBean>() {
 
-      public void onMessage(ChatMessage chatMessage) {
+      public void onMessage(ChatMessageEventAutoBean chatMessage) {
         display.displayMessage(chatMessage.getMessage());
       }
     });

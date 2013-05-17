@@ -8,5 +8,5 @@ import com.google.web.bindery.autobean.shared.AutoBeanFactory;
  */
 public interface ChatMessageFactory extends AutoBeanFactory {
 
-  AutoBean<ChatMessage> chatMessage();
+  AutoBean<ChatMessageEventAutoBean> chatMessage();
 }

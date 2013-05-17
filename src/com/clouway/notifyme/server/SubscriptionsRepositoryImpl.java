@@ -34,8 +34,6 @@ public class SubscriptionsRepositoryImpl implements SubscriptionsRepository {
   @Override
   public List<String> getSubscribedUsers(PushChannelEvent event) {
 
-    List<String> subscribedUsers = events.get(event.getEventName());
-
-    return subscribedUsers;
+    return events.get(event.getEventName());
   }
 }
