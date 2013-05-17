@@ -6,6 +6,9 @@ import com.clouway.notifyme.shared.PushChannelEvent;
 import com.clouway.notifyme.shared.PushChannelEventHandler;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.AsyncCallback;
+import com.google.gwt.user.client.rpc.SerializationException;
+import com.google.gwt.user.client.rpc.SerializationStreamFactory;
+import com.google.gwt.user.client.rpc.SerializationStreamReader;
 import com.google.inject.Inject;
 import com.google.web.bindery.autobean.shared.AutoBeanFactory;
 
@@ -73,10 +76,24 @@ public class PushChannelImpl implements PushChannel {
 
   private void onReceivedMessage(String json) {
 
-    String eventClassName = json.substring(0, json.indexOf("|"));
-    String eventDataJson = json.substring(json.indexOf("|") + 1, json.length());
-    PushChannelEvent event = deserializer.deserialize(eventClassName, eventDataJson);
+    SerializationStreamFactory pushServiceStreamFactory = (SerializationStreamFactory) PushService.App.getInstance();
 
-    eventHandlers.get(eventClassName).onMessage(event);
+    try {
+      SerializationStreamReader reader = pushServiceStreamFactory.createStreamReader(json);
+      PushChannelEvent event = (PushChannelEvent) reader.readObject();
+
+      if (eventHandlers.containsKey(event.getEventName())) {
+        eventHandlers.get(event.getEventName()).onMessage(event);
+      }
+
+    } catch (SerializationException e) {
+      throw new RuntimeException("Unable to deserialize " + json, e);
+    }
+
+    //String eventClassName = json.substring(0, json.indexOf("|"));
+    //String eventDataJson = json.substring(json.indexOf("|") + 1, json.length());
+    //PushChannelEvent event = deserializer.deserialize(eventClassName, eventDataJson);
+
+    //eventHandlers.get(eventClassName).onMessage(event);
   }
 }

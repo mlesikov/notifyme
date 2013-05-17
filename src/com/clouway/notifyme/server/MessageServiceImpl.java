@@ -6,6 +6,8 @@ import com.clouway.notifyme.client.MessageService;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;
 
+import java.util.Date;
+
 /**
  * @author Ivan Lazov <ivan.lazov@clouway.com>
  */
@@ -19,7 +21,7 @@ public class MessageServiceImpl extends RemoteServiceServlet implements MessageS
     this.pushService = pushService;
   }
 
-  public void sendMessage(String message) {
-    pushService.pushEvent(new ChatMessageEvent(message));
+  public void sendMessage(String sender, String message, Date createdOn) {
+    pushService.pushEvent(new ChatMessageEvent(sender, message, createdOn));
   }
 }

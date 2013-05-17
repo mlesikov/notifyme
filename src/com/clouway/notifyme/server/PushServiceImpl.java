@@ -4,8 +4,18 @@ import com.clouway.notifyme.shared.PushChannelEvent;
 import com.google.appengine.api.channel.ChannelMessage;
 import com.google.appengine.api.channel.ChannelService;
 import com.google.appengine.api.channel.ChannelServiceFactory;
+import com.google.gwt.user.client.rpc.SerializationException;
+import com.google.gwt.user.server.rpc.RPC;
+import com.google.gwt.user.server.rpc.SerializationPolicy;
+import com.google.gwt.user.server.rpc.SerializationPolicyLoader;
 import com.google.inject.Inject;
 
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FilenameFilter;
+import java.lang.reflect.Method;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -24,9 +34,11 @@ public class PushServiceImpl implements PushService {
 
   public void pushEvent(PushChannelEvent event) {
 
-    String eventAsJson = jsonSerializer.serialize(event);
+    //String eventAsJson = jsonSerializer.serialize(event);
 
-    String message = event.getEventName() + "|" + eventAsJson;
+    //String message = event.getEventName() + "|" + eventAsJson;
+
+    String message = encodeMessage(event);
 
     List<String> subscribedUsers = subscriptionsRepository.getSubscribedUsers(event);
 
@@ -36,16 +48,112 @@ public class PushServiceImpl implements PushService {
       channelService.sendMessage(new ChannelMessage(subscribedUser, message));
     }
   }
+
+  private static final Method dummyMethod = getDummyMethod();
+
+  private String encodeMessage(PushChannelEvent event) {
+    try {
+      return RPC.encodeResponseForSuccess(dummyMethod, event, serializationPolicy);
+    } catch (SerializationException e) {
+      throw new RuntimeException("Unable to encode a message for push.\n" + event.getEventName(), e);
+    }
+  }
+
+  private PushChannelEvent dummyMethod() {
+    throw new UnsupportedOperationException("This should never be called.");
+  }
+
+  private static Method getDummyMethod() {
+    try {
+      return PushServiceImpl.class.getDeclaredMethod("dummyMethod");
+    } catch (NoSuchMethodException e) {
+      throw new RuntimeException("Unable to find the dummy RPC method.");
+    }
+  }
+
+  private static SerializationPolicy serializationPolicy = createPushSerializationPolicy();
+
+  private static SerializationPolicy createPushSerializationPolicy() {
+    // We're reading all of the SerializationPolicy files in the app
+    // and merging them together. This approach seems a bit crappy,
+    // but less crappy than the other alternatives.
+
+    File[] files = new File("/home/ilazov/workspace/idea/notifyme/out/artifacts/notifyme/NotifyMe").listFiles(new FilenameFilter() {
+      public boolean accept(File dir, String name) {
+        return name.endsWith(".gwt.rpc");
+      }
+    });
+
+    List<SerializationPolicy> policies = new ArrayList<SerializationPolicy>();
+
+    for (File f : files) {
+      try {
+        BufferedInputStream input = new BufferedInputStream(
+                new FileInputStream(f));
+        policies.add(SerializationPolicyLoader.loadFromStream(input, null));
+      } catch (Exception e) {
+        throw new RuntimeException(
+                "Unable to load a policy file: " + f.getAbsolutePath());
+      }
+    }
+
+    return new MergedSerializationPolicy(policies);
+  }
+
+  private static class MergedSerializationPolicy extends SerializationPolicy {
+    List<SerializationPolicy> policies;
+
+    MergedSerializationPolicy(List<SerializationPolicy> policies) {
+      this.policies = policies;
+    }
+
+    @Override
+    public boolean shouldDeserializeFields(Class<?> clazz) {
+      for (SerializationPolicy p : policies) {
+        if (p.shouldDeserializeFields(clazz)) {
+          return true;
+        }
+      }
+      return false;
+    }
+
+    @Override
+    public boolean shouldSerializeFields(Class<?> clazz) {
+      for (SerializationPolicy p : policies) {
+        if (p.shouldSerializeFields(clazz)) {
+          return true;
+        }
+      }
+      return false;
+    }
+
+    @Override
+    public void validateDeserialize(Class<?> clazz)
+            throws SerializationException {
+      SerializationException se = null;
+      for (SerializationPolicy p : policies) {
+        try {
+          p.validateDeserialize(clazz);
+          return;
+        } catch (SerializationException e) {
+          se = e;
+        }
+      }
+      throw se;
+    }
+
+    @Override
+    public void validateSerialize(Class<?> clazz) throws SerializationException {
+      SerializationException se = null;
+      for (SerializationPolicy p : policies) {
+        try {
+          p.validateSerialize(clazz);
+          return;
+        } catch (SerializationException e) {
+          se = e;
+        }
+      }
+      throw se;
+    }
+  }
 }
-
-
-
-
-
-//ChatMessageFactory chatMessageFactory = AutoBeanFactorySource.create(ChatMessageFactory.class);
-//    ChatMessage chatMessage = chatMessageFactory.chatMessage().as();
-//    chatMessage.setMessage(message);
-//    chatMessage.setEventName("ChatMessageEvent");
-//
-//    AutoBean<ChatMessage> chatMessageAutoBean = AutoBeanUtils.getAutoBean(chatMessage);
-//    String jsonData = AutoBeanCodex.encode(chatMessageAutoBean).getPayload();
