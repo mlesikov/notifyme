@@ -7,14 +7,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="17cdb355-02d2-4e9e-9eb5-b1f063b4823e" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/clouway/notifyme/client/PushService.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/com/clouway/notifyme/client/PushServiceAsync.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/clouway/notifyme/shared/ChatMessageEvent.java" afterPath="$PROJECT_DIR$/src/com/clouway/notifyme/shared/ChatMessageEvent.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/clouway/notifyme/client/ChatRoom.java" afterPath="$PROJECT_DIR$/src/com/clouway/notifyme/client/ChatRoom.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/clouway/notifyme/client/MessageService.java" afterPath="$PROJECT_DIR$/src/com/clouway/notifyme/client/MessageService.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/clouway/notifyme/client/MessageServiceAsync.java" afterPath="$PROJECT_DIR$/src/com/clouway/notifyme/client/MessageServiceAsync.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/clouway/notifyme/server/MessageServiceImpl.java" afterPath="$PROJECT_DIR$/src/com/clouway/notifyme/server/MessageServiceImpl.java" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/clouway/notifyme/client/GWTJsonDeserializer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/clouway/notifyme/client/GWTJsonDeserializerImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/clouway/notifyme/server/JsonSerializer.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/clouway/notifyme/server/JsonSerializerImpl.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/clouway/notifyme/shared/ChatMessageEventAutoBean.java" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/com/clouway/notifyme/shared/ChatMessageFactory.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/clouway/notifyme/client/PushChannelImpl.java" afterPath="$PROJECT_DIR$/src/com/clouway/notifyme/client/PushChannelImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/clouway/notifyme/client/PushService.java" afterPath="$PROJECT_DIR$/src/com/clouway/notifyme/client/PushService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/clouway/notifyme/client/PushServiceAsync.java" afterPath="$PROJECT_DIR$/src/com/clouway/notifyme/client/PushServiceAsync.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/com/clouway/notifyme/server/PushServiceImpl.java" afterPath="$PROJECT_DIR$/src/com/clouway/notifyme/server/PushServiceImpl.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/notifyme.iws" afterPath="$PROJECT_DIR$/notifyme.iws" />
     </list>
@@ -24,7 +25,7 @@
     <file path="/NotifyMeGuiceServletConfig.java" changelist="17cdb355-02d2-4e9e-9eb5-b1f063b4823e" time="1368451456756" ignored="false" />
     <file path="/NotifyMe.gwt.xml" changelist="17cdb355-02d2-4e9e-9eb5-b1f063b4823e" time="1368451954375" ignored="false" />
     <file path="/NotifyMeServiceImpl.java" changelist="17cdb355-02d2-4e9e-9eb5-b1f063b4823e" time="1368433751179" ignored="false" />
-    <file path="/Dummy.txt" changelist="17cdb355-02d2-4e9e-9eb5-b1f063b4823e" time="1368800503478" ignored="false" />
+    <file path="/Dummy.txt" changelist="17cdb355-02d2-4e9e-9eb5-b1f063b4823e" time="1368801075899" ignored="false" />
     <file path="/fragment.java" changelist="17cdb355-02d2-4e9e-9eb5-b1f063b4823e" time="1368713196294" ignored="false" />
     <file path="/ChatRoom.ui.xml" changelist="17cdb355-02d2-4e9e-9eb5-b1f063b4823e" time="1368440267257" ignored="false" />
     <file path="/ChatRoom.java" changelist="17cdb355-02d2-4e9e-9eb5-b1f063b4823e" time="1368799938618" ignored="false" />
@@ -52,7 +53,7 @@
     <file path="/MessageServiceAsync.java" changelist="17cdb355-02d2-4e9e-9eb5-b1f063b4823e" time="1368799531455" ignored="false" />
     <file path="/MessageService.java" changelist="17cdb355-02d2-4e9e-9eb5-b1f063b4823e" time="1368799482431" ignored="false" />
     <file path="/MessageServiceImpl.java" changelist="17cdb355-02d2-4e9e-9eb5-b1f063b4823e" time="1368799553301" ignored="false" />
-    <file path="/PushService.java" changelist="17cdb355-02d2-4e9e-9eb5-b1f063b4823e" time="1368799100439" ignored="false" />
+    <file path="/PushService.java" changelist="17cdb355-02d2-4e9e-9eb5-b1f063b4823e" time="1368800617059" ignored="false" />
     <file path="/PushServiceImpl.java" changelist="17cdb355-02d2-4e9e-9eb5-b1f063b4823e" time="1368798948260" ignored="false" />
     <file path="/PushChannelEventHandler.java" changelist="17cdb355-02d2-4e9e-9eb5-b1f063b4823e" time="1368606060343" ignored="false" />
     <file path="/ChatMessage.java" changelist="17cdb355-02d2-4e9e-9eb5-b1f063b4823e" time="1368715594776" ignored="false" />
@@ -67,7 +68,7 @@
     <file path="/SpecialMessageEventFactory.java" changelist="17cdb355-02d2-4e9e-9eb5-b1f063b4823e" time="1368716067210" ignored="false" />
     <file path="/SpecialMessage.java" changelist="17cdb355-02d2-4e9e-9eb5-b1f063b4823e" time="1368716183884" ignored="false" />
     <file path="/SpecialMessageAutoBean.java" changelist="17cdb355-02d2-4e9e-9eb5-b1f063b4823e" time="1368717609178" ignored="false" />
-    <file path="/PushServiceAsync.java" changelist="17cdb355-02d2-4e9e-9eb5-b1f063b4823e" time="1368799124999" ignored="false" />
+    <file path="/PushServiceAsync.java" changelist="17cdb355-02d2-4e9e-9eb5-b1f063b4823e" time="1368800603434" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,7 +83,6 @@
     <disable_hints />
   </component>
   <component name="DebuggerManager">
-    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_any default_suspend_policy="SuspendAll" default_condition_enabled="true">
       <breakpoint>
         <option name="NOTIFY_CAUGHT" value="true" />
@@ -120,6 +120,7 @@
       </breakpoint>
     </breakpoint_any>
     <line_breakpoints default_suspend_policy="SuspendAll" default_condition_enabled="true" />
+    <ui_properties default_suspend_policy="SuspendAll" default_condition_enabled="true" />
     <breakpoint_rules />
     <ui_properties />
   </component>
@@ -154,15 +155,15 @@
         <option value="$PROJECT_DIR$/src/com/clouway/notifyme/server/SubscriptionServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/com/clouway/notifyme/client/SubscriptionService.java" />
         <option value="$PROJECT_DIR$/src/com/clouway/notifyme/client/GWTJsonDeserializerImpl.java" />
-        <option value="$PROJECT_DIR$/src/com/clouway/notifyme/client/PushService.java" />
-        <option value="$PROJECT_DIR$/src/com/clouway/notifyme/client/PushServiceAsync.java" />
-        <option value="$PROJECT_DIR$/src/com/clouway/notifyme/server/PushServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/com/clouway/notifyme/client/MessageService.java" />
         <option value="$PROJECT_DIR$/src/com/clouway/notifyme/client/MessageServiceAsync.java" />
         <option value="$PROJECT_DIR$/src/com/clouway/notifyme/server/MessageServiceImpl.java" />
         <option value="$PROJECT_DIR$/src/com/clouway/notifyme/shared/ChatMessageEvent.java" />
-        <option value="$PROJECT_DIR$/src/com/clouway/notifyme/client/PushChannelImpl.java" />
         <option value="$PROJECT_DIR$/src/com/clouway/notifyme/client/ChatRoom.java" />
+        <option value="$PROJECT_DIR$/src/com/clouway/notifyme/client/PushServiceAsync.java" />
+        <option value="$PROJECT_DIR$/src/com/clouway/notifyme/client/PushService.java" />
+        <option value="$PROJECT_DIR$/src/com/clouway/notifyme/server/PushServiceImpl.java" />
+        <option value="$PROJECT_DIR$/src/com/clouway/notifyme/client/PushChannelImpl.java" />
       </list>
     </option>
   </component>
@@ -200,7 +201,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -212,6 +212,7 @@
         </subPane>
       </pane>
       <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -231,9 +232,9 @@
     <property name="restartRequiresConfirmation" value="true" />
     <property name="MemberChooser.showClasses" value="true" />
     <property name="GoToClass.includeLibraries" value="false" />
-    <property name="options.searchVisible" value="true" />
-    <property name="options.splitter.details.proportions" value="0.2" />
     <property name="dynamic.classpath" value="false" />
+    <property name="options.splitter.details.proportions" value="0.2" />
+    <property name="options.searchVisible" value="true" />
   </component>
   <component name="RecentsManager">
     <key name="GwtCreateUiBinderDialog.RecentRootElementType">
@@ -270,6 +271,19 @@
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <method />
     </configuration>
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <module name="" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="HTML_FILE_NAME" />
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <option name="VM_PARAMETERS" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <method />
+    </configuration>
     <configuration default="true" type="TestNG" factoryName="TestNG">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <module name="" />
@@ -298,19 +312,6 @@
       <listeners />
       <method />
     </configuration>
-    <configuration default="true" type="Applet" factoryName="Applet">
-      <module name="" />
-      <option name="MAIN_CLASS_NAME" />
-      <option name="HTML_FILE_NAME" />
-      <option name="HTML_USED" value="false" />
-      <option name="WIDTH" value="400" />
-      <option name="HEIGHT" value="300" />
-      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
-      <option name="VM_PARAMETERS" />
-      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
-      <option name="ALTERNATIVE_JRE_PATH" />
-      <method />
-    </configuration>
     <configuration default="true" type="Application" factoryName="Application">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <option name="MAIN_CLASS_NAME" />
@@ -324,6 +325,10 @@
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="" />
       <envs />
+      <method />
+    </configuration>
+    <configuration default="true" type="GWT.ConfigurationType" factoryName="GWT Configuration">
+      <module name="" />
       <method />
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
@@ -345,10 +350,6 @@
       </option>
       <envs />
       <patterns />
-      <method />
-    </configuration>
-    <configuration default="true" type="GWT.ConfigurationType" factoryName="GWT Configuration">
-      <module name="" />
       <method />
     </configuration>
     <configuration default="false" name="NotifyMe" type="GWT.ConfigurationType" factoryName="GWT Configuration">
@@ -404,6 +405,11 @@
       <created>1368427304016</created>
       <updated>1368427304016</updated>
     </task>
+    <task id="LOCAL-00001" summary="Implemented serialization and deserialization">
+      <created>1368800528808</created>
+      <updated>1368800528808</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -481,7 +487,7 @@
     <option name="WRAP_WHEN_TYPING_REACHES_RIGHT_MARGIN" value="false" />
     <option name="FORCE_NON_EMPTY_COMMENT" value="false" />
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="false" />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented serialization and deserialization" />
+    <option name="LAST_COMMIT_MESSAGE" value="Little cleanup of unnecessary autobean classes." />
     <option name="MAKE_NEW_CHANGELIST_ACTIVE" value="false" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_FILES_UP_TO_DATE_BEFORE_COMMIT" value="false" />
@@ -499,6 +505,7 @@
     <MESSAGE value="Implemented basic chat subscriptions for new messages" />
     <MESSAGE value="Implemented client deserializer and server serializer" />
     <MESSAGE value="Implemented serialization and deserialization" />
+    <MESSAGE value="Little cleanup of unnecessary autobean classes." />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager />
@@ -508,130 +515,100 @@
     <option name="FILTER_TARGETS" value="false" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/com/clouway/notifyme/server/SubscriptionsRepositoryImpl.java">
+    <entry file="file://$PROJECT_DIR$/src/com/clouway/notifyme/client/MessageServiceAsync.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="56" selection-start="303" selection-end="303" vertical-scroll-proportion="0.20916335">
-          <folding />
+        <state line="11" column="59" selection-start="270" selection-end="270" vertical-scroll-proportion="0.18312986" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/clouway/notifyme/client/MessageService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="2" selection-start="340" selection-end="404" vertical-scroll-proportion="0.2164262" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/clouway/notifyme/shared/ChatMessageEvent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="37" column="21" selection-start="690" selection-end="690" vertical-scroll-proportion="0.61598223" />
+      </provider>
+    </entry>
+    <entry file="jar:///usr/lib/jvm/jdk1.6.0_38/src.zip!/java/net/PlainSocketImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="694" column="24" selection-start="18686" selection-end="18686" vertical-scroll-proportion="0.5172031" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/clouway/notifyme/server/MessageServiceImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="14" column="13" selection-start="375" selection-end="375" vertical-scroll-proportion="0.23307437" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/clouway/notifyme/client/ChatRoom.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="60" selection-start="1067" selection-end="1067" vertical-scroll-proportion="0.5005549" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/clouway/notifyme/client/ConnectionListener.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="17" selection-start="110" selection-end="110" vertical-scroll-proportion="0.083240844" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/clouway/notifyme/client/NotifyMe.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="6" column="13" selection-start="185" selection-end="185" vertical-scroll-proportion="0.06659268" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/clouway/notifyme/client/PushChannel.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="8" column="17" selection-start="224" selection-end="224" vertical-scroll-proportion="0.11653718" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/clouway/notifyme/client/PushService.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="23" column="50" selection-start="762" selection-end="762" vertical-scroll-proportion="0.38290787">
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/clouway/notifyme/client/SubscriptionService.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="58" selection-start="435" selection-end="435" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
+        <state line="4" column="64" selection-start="208" selection-end="208" vertical-scroll-proportion="0.03329634" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/clouway/notifyme/client/SubscriptionServiceAsync.java">
+    <entry file="file://$PROJECT_DIR$/src/com/clouway/notifyme/server/NotifyMeGuiceServletConfig.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="8" column="17" selection-start="217" selection-end="217" vertical-scroll-proportion="0.19924098">
+        <state line="23" column="50" selection-start="754" selection-end="754" vertical-scroll-proportion="0.3163152">
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/clouway/notifyme/server/SubscriptionServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="12" column="86" selection-start="429" selection-end="429" vertical-scroll-proportion="0.22770399">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/clouway/notifyme/client/GWTJsonDeserializerImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="29" column="22" selection-start="1159" selection-end="1159" vertical-scroll-proportion="0.59772295">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/clouway/notifyme/shared/PushChannelEvent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="7" column="17" selection-start="140" selection-end="140" vertical-scroll-proportion="0.11653718">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/clouway/notifyme/client/PushService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="18" selection-start="831" selection-end="831" vertical-scroll-proportion="0.4328524">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/clouway/notifyme/client/MessageServiceAsync.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="11" column="59" selection-start="270" selection-end="270" vertical-scroll-proportion="0.18312986">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/clouway/notifyme/client/MessageService.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="13" column="2" selection-start="340" selection-end="404" vertical-scroll-proportion="0.2164262">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/clouway/notifyme/shared/ChatMessageEvent.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="37" column="21" selection-start="690" selection-end="690" vertical-scroll-proportion="0.61598223">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar:///usr/lib/jvm/jdk1.6.0_38/src.zip!/java/net/PlainSocketImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="694" column="24" selection-start="18686" selection-end="18686" vertical-scroll-proportion="0.5172031">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/clouway/notifyme/client/PushChannelImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="85" column="0" selection-start="3322" selection-end="3322" vertical-scroll-proportion="0.66703665">
-          <folding>
-            <element signature="e#1115#1140#0" expanded="true" />
-            <marker date="1368799724025" expanded="true" signature="-1:-1" placeholder="{...}" />
-            <marker date="1368799724025" expanded="true" signature="-1:-1" placeholder="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/clouway/notifyme/client/ChatRoom.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="1" column="0" selection-start="37" selection-end="37" vertical-scroll-proportion="0.01664817">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
+        <state line="12" column="13" selection-start="356" selection-end="356" vertical-scroll-proportion="0.13318536" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/clouway/notifyme/server/PushServiceImpl.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="26" column="25" selection-start="934" selection-end="934" vertical-scroll-proportion="0.16648169">
+        <state line="56" column="27" selection-start="1945" selection-end="1945" vertical-scroll-proportion="0.33206832">
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/com/clouway/notifyme/server/MessageServiceImpl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="13" selection-start="375" selection-end="375" vertical-scroll-proportion="0.23307437">
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/com/clouway/notifyme/client/PushServiceAsync.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="6" column="7" selection-start="188" selection-end="188" vertical-scroll-proportion="0.09988901">
+        <state line="7" column="7" selection-start="189" selection-end="189" vertical-scroll-proportion="0.19924098">
           <folding>
             <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/com/clouway/notifyme/client/PushChannelImpl.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="75" column="8" selection-start="2659" selection-end="2659" vertical-scroll-proportion="0.60151803">
+          <folding>
+            <element signature="imports" expanded="true" />
+            <marker date="1368801097941" expanded="true" signature="-1:-1" placeholder="{...}" />
+            <marker date="1368801097941" expanded="true" signature="-1:-1" placeholder="{...}" />
           </folding>
         </state>
       </provider>

@@ -4,5 +4,6 @@ import com.clouway.notifyme.shared.PushChannelEvent;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
 public interface PushServiceAsync {
-  void receiveMessage(AsyncCallback<PushChannelEvent> async);
+
+  void receiveEvent(AsyncCallback<PushChannelEvent> async);
 }

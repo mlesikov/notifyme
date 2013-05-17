@@ -21,8 +21,8 @@ public interface PushService extends RemoteService {
     }
   }
   /**
-   * A dummy method ensuring that Message and all its subclasses
+   * A dummy method ensuring that PushChannelEvent and all its subclasses
    * are client serializable.
    */
-  PushChannelEvent receiveMessage();
+  PushChannelEvent receiveEvent();
 }

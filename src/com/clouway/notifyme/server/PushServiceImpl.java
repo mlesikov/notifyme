@@ -23,20 +23,17 @@ import java.util.List;
  */
 public class PushServiceImpl implements PushService {
 
+  private static SerializationPolicy serializationPolicy = createPushSerializationPolicy();
+  private final Method dummyMethod = getDummyMethod();
+
   private final SubscriptionsRepository subscriptionsRepository;
-  private JsonSerializer jsonSerializer;
 
   @Inject
   public PushServiceImpl(SubscriptionsRepository subscriptionsRepository) {
     this.subscriptionsRepository = subscriptionsRepository;
-    jsonSerializer = new JsonSerializerImpl();
   }
 
   public void pushEvent(PushChannelEvent event) {
-
-    //String eventAsJson = jsonSerializer.serialize(event);
-
-    //String message = event.getEventName() + "|" + eventAsJson;
 
     String message = encodeMessage(event);
 
@@ -48,8 +45,6 @@ public class PushServiceImpl implements PushService {
       channelService.sendMessage(new ChannelMessage(subscribedUser, message));
     }
   }
-
-  private static final Method dummyMethod = getDummyMethod();
 
   private String encodeMessage(PushChannelEvent event) {
     try {
@@ -70,8 +65,6 @@ public class PushServiceImpl implements PushService {
       throw new RuntimeException("Unable to find the dummy RPC method.");
     }
   }
-
-  private static SerializationPolicy serializationPolicy = createPushSerializationPolicy();
 
   private static SerializationPolicy createPushSerializationPolicy() {
     // We're reading all of the SerializationPolicy files in the app
@@ -128,8 +121,7 @@ public class PushServiceImpl implements PushService {
     }
 
     @Override
-    public void validateDeserialize(Class<?> clazz)
-            throws SerializationException {
+    public void validateDeserialize(Class<?> clazz) throws SerializationException {
       SerializationException se = null;
       for (SerializationPolicy p : policies) {
         try {

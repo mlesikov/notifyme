@@ -1,16 +1,12 @@
 package com.clouway.notifyme.client;
 
-import com.clouway.notifyme.shared.ChatMessageEventAutoBean;
-import com.clouway.notifyme.shared.ChatMessageFactory;
 import com.clouway.notifyme.shared.PushChannelEvent;
 import com.clouway.notifyme.shared.PushChannelEventHandler;
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.rpc.SerializationException;
 import com.google.gwt.user.client.rpc.SerializationStreamFactory;
 import com.google.gwt.user.client.rpc.SerializationStreamReader;
 import com.google.inject.Inject;
-import com.google.web.bindery.autobean.shared.AutoBeanFactory;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -24,15 +20,11 @@ public class PushChannelImpl implements PushChannel {
   private final SubscriptionServiceAsync subscriptionServiceAsync;
 
   private Map<String, PushChannelEventHandler> eventHandlers = new HashMap<String, PushChannelEventHandler>();
-  private Map<String, AutoBeanFactory> eventFactory = new HashMap<String, AutoBeanFactory>();
-  private Map<String, Class<?>> eventToClass = new HashMap<String, Class<?>>();
-  private GWTJsonDeserializer deserializer ;
 
   @Inject
   public PushChannelImpl(ConnectionServiceAsync connectionServiceAsync, SubscriptionServiceAsync subscriptionServiceAsync) {
     this.connectionServiceAsync = connectionServiceAsync;
     this.subscriptionServiceAsync = subscriptionServiceAsync;
-    deserializer = new GWTJsonDeserializerImpl();
   }
 
   public void connect(String username, final ConnectionListener connectionListener) {
@@ -57,8 +49,6 @@ public class PushChannelImpl implements PushChannel {
 
       public void onSuccess(Void result) {
         eventHandlers.put(event.getEventName(), eventHandler);
-        eventFactory.put(event.getEventName(), (AutoBeanFactory) GWT.create(ChatMessageFactory.class));
-        eventToClass.put(event.getEventName(), ChatMessageEventAutoBean.class);
       }
     });
   }
@@ -89,11 +79,5 @@ public class PushChannelImpl implements PushChannel {
     } catch (SerializationException e) {
       throw new RuntimeException("Unable to deserialize " + json, e);
     }
-
-    //String eventClassName = json.substring(0, json.indexOf("|"));
-    //String eventDataJson = json.substring(json.indexOf("|") + 1, json.length());
-    //PushChannelEvent event = deserializer.deserialize(eventClassName, eventDataJson);
-
-    //eventHandlers.get(eventClassName).onMessage(event);
   }
 }
