@@ -22,11 +22,21 @@
     </g:HTMLPanel>
 
     <g:HTMLPanel ui:field="chatPanel" visible="false">
+
       <g:HTMLPanel>
-        <g:TextArea ui:field="chatArea" addStyleNames="{style.chatArea}"/>
+        <g:Button ui:field="specialMessage" text="Send Special Message" />
+        <g:Button ui:field="subscribe" text="Subscribe"/>
+        <g:Button ui:field="unsubscribe" text="Unsubscribe" />
       </g:HTMLPanel>
-      <g:TextBox ui:field="messageBox" addStyleNames="{style.messageBox}"/>
-      <g:Button ui:field="sendButton" text="Send"/>
+
+      <g:HTMLPanel>
+        <g:HTMLPanel>
+          <g:TextArea ui:field="chatArea" addStyleNames="{style.chatArea}"/>
+        </g:HTMLPanel>
+        <g:TextBox ui:field="messageBox" addStyleNames="{style.messageBox}"/>
+        <g:Button ui:field="sendButton" text="Send"/>
+      </g:HTMLPanel>
+
     </g:HTMLPanel>
 
   </g:HTMLPanel>

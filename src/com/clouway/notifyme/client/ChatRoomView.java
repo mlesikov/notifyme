@@ -9,6 +9,12 @@ public interface ChatRoomView {
     void signIn(String username);
 
     void sendMessage(String message);
+
+    void subscribeForSpecialMessage(String username);
+
+    void unsubscribeFromSpecialMessage(String username);
+
+    void sendSpecialMessage(String specialMessage);
   }
 
   void setPresenter(Presenter presenter);

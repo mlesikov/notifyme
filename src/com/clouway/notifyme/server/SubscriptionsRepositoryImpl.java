@@ -36,4 +36,17 @@ public class SubscriptionsRepositoryImpl implements SubscriptionsRepository {
 
     return events.get(event.getEventName());
   }
+
+  @Override
+  public void unsubscribe(String username, PushChannelEvent event) {
+
+    if (events.containsKey(event.getEventName())) {
+      List<String> subscribedUsers = events.get(event.getEventName());
+
+      if (subscribedUsers.contains(username)) {
+        subscribedUsers.remove(username);
+        events.put(event.getEventName(), subscribedUsers);
+      }
+    }
+  }
 }

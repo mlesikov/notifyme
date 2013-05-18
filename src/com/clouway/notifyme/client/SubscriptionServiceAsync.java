@@ -9,4 +9,6 @@ import com.google.gwt.user.client.rpc.AsyncCallback;
 public interface SubscriptionServiceAsync {
 
   void subscribe(String username, PushChannelEvent event, AsyncCallback<Void> async);
+
+  void unsubscribe(String username, PushChannelEvent event, AsyncCallback<Void> async);
 }

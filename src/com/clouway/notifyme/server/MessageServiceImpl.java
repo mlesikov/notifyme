@@ -1,6 +1,8 @@
 package com.clouway.notifyme.server;
 
 import com.clouway.notifyme.shared.ChatMessageEvent;
+import com.clouway.notifyme.shared.SpecialMessage;
+import com.clouway.notifyme.shared.SpecialMessageEvent;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import com.clouway.notifyme.client.MessageService;
 import com.google.inject.Inject;
@@ -23,5 +25,10 @@ public class MessageServiceImpl extends RemoteServiceServlet implements MessageS
 
   public void sendMessage(String sender, String message, Date createdOn) {
     pushService.pushEvent(new ChatMessageEvent(sender, message, createdOn));
+  }
+
+  @Override
+  public void sendSpecialMessage(SpecialMessage specialMessage) {
+    pushService.pushEvent(new SpecialMessageEvent(specialMessage));
   }
 }

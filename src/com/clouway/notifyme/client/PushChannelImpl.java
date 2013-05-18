@@ -2,6 +2,7 @@ package com.clouway.notifyme.client;
 
 import com.clouway.notifyme.shared.PushChannelEvent;
 import com.clouway.notifyme.shared.PushChannelEventHandler;
+import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.rpc.SerializationException;
 import com.google.gwt.user.client.rpc.SerializationStreamFactory;
@@ -18,13 +19,15 @@ public class PushChannelImpl implements PushChannel {
 
   private final ConnectionServiceAsync connectionServiceAsync;
   private final SubscriptionServiceAsync subscriptionServiceAsync;
+  private final PushServiceAsync pushServiceAsync;
 
   private Map<String, PushChannelEventHandler> eventHandlers = new HashMap<String, PushChannelEventHandler>();
 
   @Inject
-  public PushChannelImpl(ConnectionServiceAsync connectionServiceAsync, SubscriptionServiceAsync subscriptionServiceAsync) {
+  public PushChannelImpl(ConnectionServiceAsync connectionServiceAsync, SubscriptionServiceAsync subscriptionServiceAsync, PushServiceAsync pushServiceAsync) {
     this.connectionServiceAsync = connectionServiceAsync;
     this.subscriptionServiceAsync = subscriptionServiceAsync;
+    this.pushServiceAsync = pushServiceAsync;
   }
 
   public void connect(String username, final ConnectionListener connectionListener) {
@@ -53,6 +56,20 @@ public class PushChannelImpl implements PushChannel {
     });
   }
 
+  public void unsubscribe(String username, PushChannelEvent event) {
+
+    subscriptionServiceAsync.unsubscribe(username, event, new AsyncCallback<Void>() {
+      @Override
+      public void onFailure(Throwable caught) {
+      }
+
+      @Override
+      public void onSuccess(Void result) {
+        Window.alert("Successfully Unsubscribed");
+      }
+    });
+  }
+
   private native void openChannel(String channelToken, PushChannelImpl pushChannelAPI) /*-{
 
       var channel = new $wnd.goog.appengine.Channel(channelToken);
@@ -66,14 +83,14 @@ public class PushChannelImpl implements PushChannel {
 
   private void onReceivedMessage(String json) {
 
-    SerializationStreamFactory pushServiceStreamFactory = (SerializationStreamFactory) PushService.App.getInstance();
+    SerializationStreamFactory pushServiceStreamFactory = (SerializationStreamFactory) pushServiceAsync;
 
     try {
       SerializationStreamReader reader = pushServiceStreamFactory.createStreamReader(json);
       PushChannelEvent event = (PushChannelEvent) reader.readObject();
 
       if (eventHandlers.containsKey(event.getEventName())) {
-        eventHandlers.get(event.getEventName()).onMessage(event);
+        eventHandlers.get(event.getEventName()).onEvent(event);
       }
 
     } catch (SerializationException e) {

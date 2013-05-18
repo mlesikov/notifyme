@@ -12,4 +12,6 @@ public interface SubscriptionsRepository {
   void subscribe(String username, PushChannelEvent event);
 
   List<String> getSubscribedUsers(PushChannelEvent event);
+
+  void unsubscribe(String username, PushChannelEvent event);
 }

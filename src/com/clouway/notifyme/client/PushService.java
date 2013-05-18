@@ -1,25 +1,21 @@
 package com.clouway.notifyme.client;
 
 import com.clouway.notifyme.shared.PushChannelEvent;
-import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 
+/**
+ * This interface is odd in that the client doesn't actually make calls
+ * through this interface to the server. Instead the server uses server-side
+ * push to send GWT RPC encoded data to the client via an alternate
+ * transport. The definition of this interface helps to ensure that all
+ * the correct de-serialization code is generated for the client. A call to
+ * GWT.create on this service must be made to ensure the de-serialization
+ * code is actually generated.
+ */
 @RemoteServiceRelativePath("push_service")
 public interface PushService extends RemoteService {
 
-  /**
-   * Utility/Convenience class. Use PushService.App.getInstance() to access
-   * static instance of PushServiceAsync
-   */
-  public static class App {
-    private static final PushServiceAsync ourInstance = (PushServiceAsync) GWT
-        .create(PushService.class);
-
-    public static PushServiceAsync getInstance() {
-      return ourInstance;
-    }
-  }
   /**
    * A dummy method ensuring that PushChannelEvent and all its subclasses
    * are client serializable.

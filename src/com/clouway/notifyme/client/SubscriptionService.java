@@ -11,4 +11,6 @@ import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 public interface SubscriptionService extends RemoteService {
 
   void subscribe(String username, PushChannelEvent event);
+
+  void unsubscribe(String username, PushChannelEvent event);
 }

@@ -22,4 +22,9 @@ public class SubscriptionServiceImpl extends RemoteServiceServlet implements Sub
   public void subscribe(String username, PushChannelEvent event) {
     subscriptionsRepository.subscribe(username, event);
   }
+
+  @Override
+  public void unsubscribe(String username, PushChannelEvent event) {
+    subscriptionsRepository.unsubscribe(username, event);
+  }
 }

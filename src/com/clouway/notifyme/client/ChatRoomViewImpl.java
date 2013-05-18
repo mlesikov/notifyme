@@ -45,6 +45,15 @@ public class ChatRoomViewImpl extends Composite implements ChatRoomView {
   @UiField
   TextArea chatArea;
 
+  @UiField
+  Button specialMessage;
+
+  @UiField
+  Button subscribe;
+
+  @UiField
+  Button unsubscribe;
+
   public ChatRoomViewImpl() {
     initWidget(uiBinder.createAndBindUi(this));
   }
@@ -76,5 +85,20 @@ public class ChatRoomViewImpl extends Composite implements ChatRoomView {
   @Override
   public void displayMessage(String message) {
     chatArea.setText(chatArea.getText().concat(message).concat("\n"));
+  }
+
+  @UiHandler("subscribe")
+  public void onSubscribeButtonClick(ClickEvent event) {
+    presenter.subscribeForSpecialMessage(usernameBox.getText());
+  }
+
+  @UiHandler("unsubscribe")
+  public void onUnsubscribeButtonClick(ClickEvent event) {
+    presenter.unsubscribeFromSpecialMessage(usernameBox.getText());
+  }
+
+  @UiHandler("specialMessage")
+  public void onSpecialMessageButtonClick(ClickEvent event) {
+    presenter.sendSpecialMessage(messageBox.getText());
   }
 }

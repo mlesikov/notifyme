@@ -1,5 +1,6 @@
 package com.clouway.notifyme.client;
 
+import com.clouway.notifyme.shared.SpecialMessage;
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 
@@ -12,4 +13,6 @@ import java.util.Date;
 public interface MessageService extends RemoteService {
 
   void sendMessage(String sender, String message, Date createdOn);
+
+  void sendSpecialMessage(SpecialMessage specialMessage);
 }

@@ -67,9 +67,7 @@ public class PushServiceImpl implements PushService {
   }
 
   private static SerializationPolicy createPushSerializationPolicy() {
-    // We're reading all of the SerializationPolicy files in the app
-    // and merging them together. This approach seems a bit crappy,
-    // but less crappy than the other alternatives.
+    // Read all of the SerializationPolicy files in the app and merging them together.
 
     File[] files = new File("/home/ilazov/workspace/idea/notifyme/out/artifacts/notifyme/NotifyMe").listFiles(new FilenameFilter() {
       public boolean accept(File dir, String name) {

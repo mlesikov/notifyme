@@ -11,8 +11,9 @@ public class NotifyMe implements EntryPoint {
     ConnectionServiceAsync connectionServiceAsync = GWT.create(ConnectionService.class);
     SubscriptionServiceAsync subscriptionServiceAsync = GWT.create(SubscriptionService.class);
     MessageServiceAsync messageServiceAsync = GWT.create(MessageService.class);
+    PushServiceAsync pushServiceAsync = GWT.create(PushService.class);
 
-    PushChannel pushChannel = new PushChannelImpl(connectionServiceAsync, subscriptionServiceAsync);
+    PushChannel pushChannel = new PushChannelImpl(connectionServiceAsync, subscriptionServiceAsync, pushServiceAsync);
 
     ChatRoomViewImpl chatRoomView = new ChatRoomViewImpl();
     ChatRoom chatRoom = new ChatRoom(pushChannel, messageServiceAsync, chatRoomView);

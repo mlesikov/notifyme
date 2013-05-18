@@ -11,4 +11,6 @@ public interface PushChannel {
   void connect(String username, ConnectionListener connectionListener);
 
   void subscribe(String username, PushChannelEvent event, PushChannelEventHandler eventHandler);
+
+  void unsubscribe(String username, PushChannelEvent event);
 }

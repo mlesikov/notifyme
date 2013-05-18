@@ -2,6 +2,8 @@ package com.clouway.notifyme.client;
 
 import com.clouway.notifyme.shared.ChatMessageEvent;
 import com.clouway.notifyme.shared.PushChannelEventHandler;
+import com.clouway.notifyme.shared.SpecialMessage;
+import com.clouway.notifyme.shared.SpecialMessageEvent;
 import com.google.gwt.i18n.client.DateTimeFormat;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
@@ -13,14 +15,14 @@ import java.util.Date;
 public class ChatRoom implements ChatRoomView.Presenter {
 
   private final PushChannel pushChannel;
-  private final MessageServiceAsync messageServiceAsync;
+  private final MessageServiceAsync messageService;
   private final ChatRoomView display;
 
   private String sender = "";
 
-  public ChatRoom(PushChannel pushChannel, MessageServiceAsync messageServiceAsync, ChatRoomView display) {
+  public ChatRoom(PushChannel pushChannel, MessageServiceAsync messageService, ChatRoomView display) {
     this.pushChannel = pushChannel;
-    this.messageServiceAsync = messageServiceAsync;
+    this.messageService = messageService;
     this.display = display;
   }
 
@@ -36,9 +38,9 @@ public class ChatRoom implements ChatRoomView.Presenter {
 
     pushChannel.subscribe(username, new ChatMessageEvent(), new PushChannelEventHandler<ChatMessageEvent>() {
 
-      public void onMessage(ChatMessageEvent chatMessageEvent) {
+      public void onEvent(ChatMessageEvent chatMessageEvent) {
 
-        DateTimeFormat dateTimeFormat = DateTimeFormat.getFormat("(H:mm:s)");
+        DateTimeFormat dateTimeFormat = DateTimeFormat.getFormat("(HH:mm:ss)");
         String createdOn = dateTimeFormat.format(chatMessageEvent.getCreatedOn());
         String sender = chatMessageEvent.getSender();
         String message = chatMessageEvent.getMessage();
@@ -50,11 +52,43 @@ public class ChatRoom implements ChatRoomView.Presenter {
 
   public void sendMessage(String message) {
 
-    messageServiceAsync.sendMessage(sender, message, new Date(), new AsyncCallback<Void>() {
+    messageService.sendMessage(sender, message, new Date(), new AsyncCallback<Void>() {
 
       public void onFailure(Throwable caught) {
       }
 
+      public void onSuccess(Void result) {
+        display.clearMessageBox();
+      }
+    });
+  }
+
+  @Override
+  public void subscribeForSpecialMessage(String username) {
+
+    pushChannel.subscribe(username, new SpecialMessageEvent(), new PushChannelEventHandler<SpecialMessageEvent>() {
+
+      public void onEvent(SpecialMessageEvent message) {
+        display.displayMessage("Special Message: " + message.getSpecialMessage().getMessage());
+      }
+    });
+  }
+
+  @Override
+  public void unsubscribeFromSpecialMessage(String username) {
+
+    pushChannel.unsubscribe(username, new SpecialMessageEvent());
+  }
+
+  @Override
+  public void sendSpecialMessage(String specialMessage) {
+
+    messageService.sendSpecialMessage(new SpecialMessage(specialMessage), new AsyncCallback<Void>() {
+      @Override
+      public void onFailure(Throwable caught) {
+      }
+
+      @Override
       public void onSuccess(Void result) {
         display.clearMessageBox();
       }

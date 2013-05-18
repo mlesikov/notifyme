@@ -1,5 +1,6 @@
 package com.clouway.notifyme.client;
 
+import com.clouway.notifyme.shared.SpecialMessage;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 
 import java.util.Date;
@@ -10,4 +11,7 @@ import java.util.Date;
 public interface MessageServiceAsync {
 
   void sendMessage(String sender, String message, Date createdOn, AsyncCallback<Void> async);
+
+
+  void sendSpecialMessage(SpecialMessage specialMessage, AsyncCallback<Void> async);
 }
