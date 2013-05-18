@@ -1,6 +1,6 @@
-package com.clouway.notifyme.server;
+package com.clouway.notifyme.server.spi;
 
-import com.clouway.notifyme.shared.PushChannelEvent;
+import com.clouway.notifyme.shared.spi.PushChannelEvent;
 
 import java.util.List;
 

@@ -1,5 +1,7 @@
 package com.clouway.notifyme.shared;
 
+import com.clouway.notifyme.shared.spi.PushChannelEvent;
+
 /**
  * @author Ivan Lazov <ivan.lazov@clouway.com>
  */

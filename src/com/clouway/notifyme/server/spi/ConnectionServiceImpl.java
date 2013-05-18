@@ -1,8 +1,8 @@
-package com.clouway.notifyme.server;
+package com.clouway.notifyme.server.spi;
 
 import com.google.appengine.api.channel.ChannelServiceFactory;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
-import com.clouway.notifyme.client.ConnectionService;
+import com.clouway.notifyme.client.spi.ConnectionService;
 import com.google.inject.Singleton;
 
 import java.util.HashMap;

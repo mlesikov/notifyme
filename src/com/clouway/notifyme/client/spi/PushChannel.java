@@ -1,7 +1,7 @@
-package com.clouway.notifyme.client;
+package com.clouway.notifyme.client.spi;
 
-import com.clouway.notifyme.shared.PushChannelEvent;
-import com.clouway.notifyme.shared.PushChannelEventHandler;
+import com.clouway.notifyme.shared.spi.PushChannelEvent;
+import com.clouway.notifyme.shared.spi.PushChannelEventHandler;
 
 /**
  * @author Ivan Lazov <ivan.lazov@clouway.com>

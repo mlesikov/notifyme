@@ -1,6 +1,6 @@
-package com.clouway.notifyme.client;
+package com.clouway.notifyme.client.spi;
 
-import com.clouway.notifyme.shared.PushChannelEvent;
+import com.clouway.notifyme.shared.spi.PushChannelEvent;
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
 

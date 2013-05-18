@@ -1,8 +1,7 @@
-package com.clouway.notifyme.client;
+package com.clouway.notifyme.client.spi;
 
 import com.google.gwt.user.client.rpc.RemoteService;
 import com.google.gwt.user.client.rpc.RemoteServiceRelativePath;
-import com.google.gwt.core.client.GWT;
 
 @RemoteServiceRelativePath("ConnectionService")
 public interface ConnectionService extends RemoteService {

@@ -1,4 +1,4 @@
-package com.clouway.notifyme.shared;
+package com.clouway.notifyme.shared.spi;
 
 /**
  * @author Ivan Lazov <ivan.lazov@clouway.com>

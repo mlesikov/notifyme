@@ -1,7 +1,7 @@
-package com.clouway.notifyme.server;
+package com.clouway.notifyme.server.spi;
 
-import com.clouway.notifyme.shared.PushChannelEvent;
-import com.clouway.notifyme.client.SubscriptionService;
+import com.clouway.notifyme.shared.spi.PushChannelEvent;
+import com.clouway.notifyme.client.spi.SubscriptionService;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
 import com.google.inject.Inject;
 import com.google.inject.Singleton;

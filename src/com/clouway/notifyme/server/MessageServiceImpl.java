@@ -1,5 +1,6 @@
 package com.clouway.notifyme.server;
 
+import com.clouway.notifyme.server.spi.PushService;
 import com.clouway.notifyme.shared.ChatMessageEvent;
 import com.clouway.notifyme.shared.SpecialMessage;
 import com.clouway.notifyme.shared.SpecialMessageEvent;

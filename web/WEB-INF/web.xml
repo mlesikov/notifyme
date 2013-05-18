@@ -15,7 +15,7 @@
   </filter-mapping>
 
   <listener>
-    <listener-class>com.clouway.notifyme.server.NotifyMeGuiceServletConfig</listener-class>
+    <listener-class>com.clouway.notifyme.server.spi.NotifyMeGuiceServletConfig</listener-class>
   </listener>
 
 </web-app>

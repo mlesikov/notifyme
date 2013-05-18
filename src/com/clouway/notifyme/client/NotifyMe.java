@@ -1,5 +1,6 @@
 package com.clouway.notifyme.client;
 
+import com.clouway.notifyme.client.spi.*;
 import com.google.gwt.core.client.EntryPoint;
 import com.google.gwt.core.client.GWT;
 import com.google.gwt.user.client.ui.RootPanel;

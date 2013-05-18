@@ -1,7 +1,7 @@
-package com.clouway.notifyme.client;
+package com.clouway.notifyme.client.spi;
 
-import com.clouway.notifyme.shared.PushChannelEvent;
-import com.clouway.notifyme.shared.PushChannelEventHandler;
+import com.clouway.notifyme.shared.spi.PushChannelEvent;
+import com.clouway.notifyme.shared.spi.PushChannelEventHandler;
 import com.google.gwt.user.client.Window;
 import com.google.gwt.user.client.rpc.AsyncCallback;
 import com.google.gwt.user.client.rpc.SerializationException;
@@ -76,7 +76,7 @@ public class PushChannelImpl implements PushChannel {
       var socket = channel.open();
 
       socket.onmessage = function (event) {
-          pushChannelAPI.@com.clouway.notifyme.client.PushChannelImpl::onReceivedMessage(Ljava/lang/String;)(event.data);
+          pushChannelAPI.@com.clouway.notifyme.client.spi.PushChannelImpl::onReceivedMessage(Ljava/lang/String;)(event.data);
       }
 
   }-*/;

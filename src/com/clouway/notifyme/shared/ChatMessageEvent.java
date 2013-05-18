@@ -1,5 +1,7 @@
 package com.clouway.notifyme.shared;
 
+import com.clouway.notifyme.shared.spi.PushChannelEvent;
+
 import java.util.Date;
 
 /**

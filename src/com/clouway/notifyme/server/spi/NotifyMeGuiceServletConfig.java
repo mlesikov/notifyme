@@ -1,5 +1,6 @@
-package com.clouway.notifyme.server;
+package com.clouway.notifyme.server.spi;
 
+import com.clouway.notifyme.server.MessageServiceImpl;
 import com.google.inject.Guice;
 import com.google.inject.Injector;
 import com.google.inject.Singleton;

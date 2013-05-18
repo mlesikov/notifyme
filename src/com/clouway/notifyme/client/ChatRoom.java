@@ -1,7 +1,9 @@
 package com.clouway.notifyme.client;
 
+import com.clouway.notifyme.client.spi.ConnectionListener;
+import com.clouway.notifyme.client.spi.PushChannel;
 import com.clouway.notifyme.shared.ChatMessageEvent;
-import com.clouway.notifyme.shared.PushChannelEventHandler;
+import com.clouway.notifyme.shared.spi.PushChannelEventHandler;
 import com.clouway.notifyme.shared.SpecialMessage;
 import com.clouway.notifyme.shared.SpecialMessageEvent;
 import com.google.gwt.i18n.client.DateTimeFormat;

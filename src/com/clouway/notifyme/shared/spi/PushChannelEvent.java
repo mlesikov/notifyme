@@ -1,4 +1,4 @@
-package com.clouway.notifyme.shared;
+package com.clouway.notifyme.shared.spi;
 
 import java.io.Serializable;
 
